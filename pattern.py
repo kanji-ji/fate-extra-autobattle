@@ -1,3 +1,6 @@
+import argparse
+
+
 def stronger_than(x):
     if x == 'A':
         return 'G'
@@ -72,7 +75,6 @@ def todict(enemy_action):
     return ret
 
 
-
 def insert_star(string):
     stars = ''
     for i in range(len(string)):
@@ -118,5 +120,14 @@ def calc_optim_action(enemy_action):
     return action
 
 
-print(calc_optim_action('G**A'))
-#2
+def main():
+    print('Enter enemy action.')
+    enemy_action = input()
+    try:
+        print(calc_optim_action(enemy_action))
+    except:
+        print('Input is invalid. Confirm input string and pattern.txt.')
+
+
+if __name__ == '__main__':
+    main()
