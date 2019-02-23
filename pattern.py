@@ -1,6 +1,3 @@
-import argparse
-
-
 def stronger_than(x):
     if x == 'A':
         return 'G'
