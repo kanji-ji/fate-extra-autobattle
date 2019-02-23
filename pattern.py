@@ -65,7 +65,7 @@ def calc_optim_type(atk_type_dict):
         return stronger_than(ans)
                 
 
-def todict(enemy_action):
+def to_dict(enemy_action):
     ret = {}
     if len(enemy_action) > 6:
         raise Exception('input string must be 6 or less')
@@ -102,13 +102,14 @@ def calc_optim_action(enemy_action):
     with open('pattern.txt', 'r') as f:
         pattern_list = f.readlines()
     pattern_list = [clean_string(pattern) for pattern in pattern_list]
-    pattern_dict = todict(enemy_action)
+    pattern_dict = to_dict(enemy_action)
     for key, atk_type in pattern_dict.items():
         pattern_list = [pattern 
         for pattern in pattern_list 
         if pattern[key] == atk_type or pattern[key] == '*']
     
-    pattern_list = [pattern.replace('S', 'A').replace('W','*').replace('E', 'A') for pattern in pattern_list]
+    pattern_list = [pattern.replace('S', 'A').replace('W','*').replace('E', 'A')
+    for pattern in pattern_list]
     action = ''
     for i in range(6):
         abgs_dict = {'A':0, 'B':0, 'G':0}
