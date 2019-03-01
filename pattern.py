@@ -1,3 +1,6 @@
+import traceback
+
+
 def stronger_than(x):
     if x == 'A':
         return 'G'
@@ -7,6 +10,15 @@ def stronger_than(x):
         return 'B'
     if x == 'S':
         return 'G'
+
+
+def weaker_than(x):
+    if x == 'A':
+        return 'B'
+    if x == 'B':
+        return 'G'
+    if x == 'G':
+        return 'A'
 
 
 def which_is_strong(atk_type_a, atk_type_b):
@@ -41,12 +53,7 @@ def calc_optim_type(atk_type_dict):
     if zero_cnt == 1:
         for key, value in atk_type_dict.items():
             if value == 0:
-                if key == 'A':
-                    return 'B'
-                if key == 'B':
-                    return 'G'
-                if key == 'G':
-                    return 'A'
+                return weaker_than(key)
     if zero_cnt == 0:
         max_value = 0
         equal_cnt = 0
@@ -60,7 +67,7 @@ def calc_optim_type(atk_type_dict):
                     return '*'
                 ans = which_is_weak(ans, key)
         return stronger_than(ans)
-                
+
 
 def to_dict(enemy_action):
     ret = {}
@@ -90,7 +97,7 @@ def insert_star(string):
 def clean_string(string):
     string = string.strip()
     string = string.replace(',', '')
-    string = string.replace('?','*')
+    string = string.replace('?', '*')
     string = insert_star(string)
     return string
 
@@ -101,15 +108,18 @@ def calc_optim_action(enemy_action):
     pattern_list = [clean_string(pattern) for pattern in pattern_list]
     pattern_dict = to_dict(enemy_action)
     for key, atk_type in pattern_dict.items():
-        pattern_list = [pattern 
-        for pattern in pattern_list 
-        if pattern[key] == atk_type or pattern[key] == '*']
-    
-    pattern_list = [pattern.replace('S', 'A').replace('W','*').replace('E', 'A')
-    for pattern in pattern_list]
+        pattern_list = [
+            pattern for pattern in pattern_list
+            if pattern[key] == atk_type or pattern[key] == '*'
+        ]
+
+    pattern_list = [
+        pattern.replace('S', 'A').replace('W', '*').replace('E', 'A')
+        for pattern in pattern_list
+    ]
     action = ''
     for i in range(6):
-        abgs_dict = {'A':0, 'B':0, 'G':0}
+        abgs_dict = {'A': 0, 'B': 0, 'G': 0}
         for pattern in pattern_list:
             if pattern[i] != '*':
                 abgs_dict[pattern[i]] += 1
@@ -123,8 +133,9 @@ def main():
     enemy_action = input()
     try:
         print(calc_optim_action(enemy_action))
-    except:
+    except Exception:
         print('Input is invalid. Confirm input string and pattern.txt.')
+        traceback.print_exc()
 
 
 if __name__ == '__main__':
