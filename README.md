@@ -12,20 +12,15 @@ Python3系の環境があれば多分動きます。2系は確認してないの
 ## 記号の定義
 
 基本的に以下の定義に従って入力と出力がなされます。
-
-G: GUARD
-
-B: BREAK
-
-A: ATTACK
-
-S: SKILL
-
-E: EXTRA
-
-W: WAIT
-
-*: 不明なパターン
+|記号|意味|
+|----|----|
+| G |GUARD|
+| B |BREAK|
+| A |ATTACK|
+| S |SKILL|
+| E |EXTRA|
+| W |WAIT|
+|*|不明なパターン|
 
 ## コードの動かし方
 
@@ -33,7 +28,7 @@ W: WAIT
 
 そして以下のコードを実行してください。
 
-```
+```python
 python pattern.py
 ```
 
@@ -47,6 +42,7 @@ Enter enemy action.
 
 ```
 G*B***
+G*B
 ```
 
 ## 出力の解釈
