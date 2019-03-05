@@ -1,3 +1,4 @@
+import re
 import traceback
 
 
@@ -98,6 +99,8 @@ def clean_string(string):
     string = string.strip()
     string = string.replace(',', '')
     string = string.replace('?', '*')
+    string = string.replace('X', '')
+    string = re.sub('[1-9]', '', string)
     string = insert_star(string)
     return string
 
@@ -107,11 +110,18 @@ def calc_optim_action(enemy_action):
         pattern_list = f.readlines()
     pattern_list = [clean_string(pattern) for pattern in pattern_list]
     pattern_dict = to_dict(enemy_action)
-    for key, atk_type in pattern_dict.items():
-        pattern_list = [
-            pattern for pattern in pattern_list
-            if pattern[key] == atk_type or pattern[key] == '*'
-        ]
+    
+    new_pattern_list = []
+    for pattern in pattern_list:
+        match = True
+        for key, atk_type in pattern_dict.items():
+            if pattern[key] != atk_type and pattern[key] != '*':
+                match = False
+        if match:
+            new_pattern_list.append(pattern)
+
+    pattern_list = new_pattern_list
+    del new_pattern_list
 
     pattern_list = [
         pattern.replace('S', 'A').replace('W', '*').replace('E', 'A')
