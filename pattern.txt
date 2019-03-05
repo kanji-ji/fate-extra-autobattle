@@ -1,27 +1,27 @@
-G	A	B	B	A	A
-G	A	B	B	B	G
-G	A	B	G	G	G
-G	G	G	A	B	A
-G	G	G	A	B	G
-G	G	G	A	G	A
-G	B	B	B	A	B
-G	B	B	B	G	A
-G	B	B	B	G	B
-G	B	G	B	B	B
-G	S	A	A	A	G
-G	S	A	G	G	G
-G	S	B	A	A	A
-G	S	B	B	B	A
-G	S	B	G	G	G
-G	S	G	B	B	B
-G	S	G	G	G	B
-G	A	S	B	B	B
-G	B	S	A	A	A
-G	A	B	B	B	S
-G	A	G	G	G	S
-G	B	A	A	A	S
-G	B	G	G	G	S
-G	B	S	A	A	A
-G	S	A	A	A	B
-G	S	G	A	A	A
-G	S	G	B	B	B
+A		A	G	B	E
+A	G	A	E		
+B	G	B	A	G	E
+G		G	A	B	E
+B	A	B	E
+A		B	B		S
+A	G	B	G	G	S
+A	G	G	B	G	S
+A	G	S	G	A	B
+A	S
+B	A		S	B	A
+B	A	S	G		G
+B	G	A	S	A	G
+B	G	B	S	A	G
+B	S	A	G
+B	S
+G	A	B	B	B	A
+G	B		A	G	A
+G		G	A	G	S
+G	S		G	B	B
+G	S	B	B
+G	S
+S	A	B	G	B	A
+S	A	G	B	G	A
+S	A		B	A	A
+S	A	G
+B	G	B	G	S
