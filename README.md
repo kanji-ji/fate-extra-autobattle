@@ -2,7 +2,7 @@
 
 ## コードの動作
 
-Fate/EXtRAまたはFate/EXTRA CCCのバトルにおいて各ターンでの
+Fate/EXTRAまたはFate/EXTRA CCCのバトルにおいて各ターンでの
 受けるダメージの期待値が最小となる行動パターンを出力します。
 
 ## 実行環境
