@@ -100,6 +100,8 @@ def clean_string(string):
     string = string.replace(',', '')
     string = string.replace('?', '*')
     string = string.replace('X', '')
+    string = string.replace(' ', '')
+    string = string.replace('　', '')
     string = re.sub('[1-9]', '', string)
     string = insert_star(string)
     return string
