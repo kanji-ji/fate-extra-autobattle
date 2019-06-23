@@ -83,13 +83,15 @@ def to_dict(enemy_action):
 def insert_star(string):
     stars = ''
     for i in range(len(string)):
-        if string[i] == '\t':
+        if string[i] == '\t' or string[i] == ' ' or string[i] == '　':
             stars += '*'
         else:
             if stars != '':
                 string = string[:i] + stars[:-1] + string[i:]
             stars = ''
     string = string.replace('\t', '')
+    string = string.replace(' ', '')
+    string = string.replace('　', '')
     while len(string) < 6:
         string += '*'
     return string
@@ -100,8 +102,6 @@ def clean_string(string):
     string = string.replace(',', '')
     string = string.replace('?', '*')
     string = string.replace('X', '')
-    string = string.replace(' ', '')
-    string = string.replace('　', '')
     string = re.sub('[1-9]', '', string)
     string = insert_star(string)
     return string
