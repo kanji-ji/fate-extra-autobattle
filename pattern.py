@@ -80,18 +80,16 @@ def to_dict(enemy_action):
     return ret
 
 
-def insert_star(string):
+def insert_star(string, splitter='\t'):
     stars = ''
     for i in range(len(string)):
-        if string[i] == '\t' or string[i] == ' ' or string[i] == '　':
+        if string[i] == splitter:
             stars += '*'
         else:
             if stars != '':
                 string = string[:i] + stars[:-1] + string[i:]
             stars = ''
-    string = string.replace('\t', '')
-    string = string.replace(' ', '')
-    string = string.replace('　', '')
+    string = string.replace(splitter, '')
     while len(string) < 6:
         string += '*'
     return string
@@ -103,7 +101,8 @@ def clean_string(string):
     string = string.replace('?', '*')
     string = string.replace('X', '')
     string = re.sub('[1-9]', '', string)
-    string = insert_star(string)
+    string = insert_star(string, splitter='\t')
+    string = insert_star(string, splitter=' ')
     return string
 
 
